@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .api import *
 
 urlpatterns = [
     path('',views.home),
@@ -27,8 +28,24 @@ urlpatterns = [
     path('teacher_profle_view/<int:id>/',views.teacher_profle_view,name="teacher_profle_view"),
 
 
-
     path('teacher_search/',views.teacher_search,name="teacher_search"),
     path('student_search/',views.student_search,name="student_search"),
+
+    path('course_create/',CourseViewSet.as_view()),
+    path('course_listview/',CourseListViewSet.as_view()),
+    path('course_restrive/<int:pk>/',CourseRetriveViewSet.as_view()),
+    path('course_delete/<int:pk>/',CourseDEleteViewSet.as_view()),
+
+
+    # for student
+    path('student_create_view_set/',StudentViewSet.as_view()),
+    path('student_list_view/',StudentlistView.as_view()),
+    path('student_retrive/<int:pk>/',StudentRetrive.as_view()),
+    path('student_delete/<int:pk>/',StudentDelete.as_view()),
+    path('student_some_update/<int:pk>/',StudentSomeFieldUpdate.as_view()),
+
+    path('student_list_create/',StudentListCreate.as_view()),
+    path('student_list_update/<int:pk>/',StudentRetriveUpdate.as_view()),
+    
 
 ]
